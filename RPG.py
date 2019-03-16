@@ -1,6 +1,7 @@
 from random import random
 from sys import exit
 
+name = input("Hello what is your name?")
 
 
 
@@ -10,13 +11,24 @@ class Hero(object):
             self.strength = strength
             self.money = money
 
-    hero = Person(0, 0, 0)
+    name = Hero(0, 0, 0)
     food = 0
     axe = False
     pickaxe = False
     bow = False
     fishingrod = False
 
+    def hptest():
+        if Hero.hitpoints <= 0
+            Death()
+        else:
+            pass
+
+    def hungertest():
+        if Hero.food <= 0
+            Death()
+        else:
+            pass
 
     def equip():
         if axe == True:
@@ -37,6 +49,8 @@ class Hero(object):
             while hp1  > 0 or hp2 > 0:
                 hp1 -= damage2,
                 hp2 -= damage1
+            else:
+                Print(f"You lost {hp1}HP, your opponent lost {hp2}HP")
 
 class Creature(object):
     def __init__(self, hit_points, strength, money):
@@ -97,7 +111,7 @@ class NPC(object):
                 pass
             elif buy == "attack" or "kill":
                 pass
-            elif buy == "run":
+            elif buy == "run" or "leave"
                 pass
 
             else:
