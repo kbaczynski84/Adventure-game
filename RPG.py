@@ -2,14 +2,13 @@ from random import random
 from sys import exit
 
 
-class Person(object):
+
+
+class Hero(object):
     def __init__(self, hit_points, strength, money):
             self.hit_poitns = hit_points
             self.strength = strength
             self.money = money
-
-
-class Hero(Person):
 
     hero = Person(0, 0, 0)
     food = 0
@@ -29,66 +28,86 @@ class Hero(Person):
         else:
             pass
 
+# this metod i think it will be easier to assign to creature to only fight hero
+    def fight():
+        hp1 == Hero.hit_points
+        hp2 == Creature.hit_points
+        damage1 = Hero.strength.equip
+        damage2 = Creature.strength
+            while hp1  > 0 or hp2 > 0:
+                hp1 -= damage2,
+                hp2 -= damage1
 
-#class Monster(Person):
-    goblin = Person(0, 0, 0)
+class Creature(object):
+    def __init__(self, hit_points, strength, money):
+            self.hit_poitns = hit_points
+            self.strength = strength
+            self.money = money
 
 
-#class Animall(Person):
-    deer = Person(0, 0, 0)
+#class monster(creature)
+    goblin = Creature(0, 0, 0)
+
+
+#class Animall(Creature):
+    deer = Creature(0, 0, 0)
 
 
 #class Fish(Person):
-    herring = Person(0, 0, 0)
+    herring = Creture(0, 0, 0)
 
 
 
-class Shopkeeper(Person):
+class NPC(object):
+    def __init__(self, hit_points, strength, money):
+            self.hit_poitns = hit_points
+            self.strength = strength
+            self.money = money
 
     Sigfrid = Person(0, 0, 0)
     alive = True
 
-    def shop_greating():
-        print("""
-        Greeting traveller. What do you wish to have?
-        1.FishingRod          - 10 gp
-        2.Bow                 - 20 gp
-        2 Pickaxe             - 50 gp
-        4.Axe                 - 100 gp
-        5. or maybe some food?-  2 gp
-        """)
+        def shop_greating():
+            print("""
+            Greeting traveller. What do you wish to have?
+            1.FishingRod          - 10 gp
+            2.Bow                 - 20 gp
+            2 Pickaxe             - 50 gp
+            4.Axe                 - 100 gp
+            5. or maybe some food?-  2 gp
+            """)
 
-        buy = input("<")
+            buy = input("<")
 
-        if buy == "1" and money > 10:
-            fishingrod = True,
-            money -= 10
-        elif buy == "2" and money > 20:
-            bow = True,
-            money -= 20
-        elif buy == "3" and money > 50:
-             pickaxe = True,
-             money -= 50
-        elif buy == "4" and money > 100:
-            axe = True,
-            money -= 100
-        elif buy == "5" and money > 2:
-            food += 5
-        elif buy == "steal":
-            pass
-        elif buy == "attack" or "kill":
-            pass
-        elif buy == "run":
-            pass
+            if buy == "1" and money > 10:
+                fishingrod = True,
+                money -= 10
+            elif buy == "2" and money > 20:
+                bow = True,
+                money -= 20
+            elif buy == "3" and money > 50:
+                 pickaxe = True,
+                 money -= 50
+            elif buy == "4" and money > 100:
+                axe = True,
+                money -= 100
+            elif buy == "5" and money > 2:
+                food += 5
+            elif buy == "steal":
+                pass
+            elif buy == "attack" or "kill":
+                pass
+            elif buy == "run":
+                pass
 
-        else:
-            print("I dont understand")
+            else:
+                print("I dont understand")
 
 
 
 class Location(object):
     pass
-
+#here i will poss init method which when executed will take food from the hero
 
 class Death(Location):
 
@@ -113,7 +132,7 @@ class Forest(Location):
         But lately when you traveled to the forest you seem to notice an
         increased number of goblins in here. Forest is good hunting grounds
         but could also have an encounter with some type of monster if you
-        wont be carefull
+        wont be carefull.
         """)
 
 class Dungeon(Location):
@@ -163,15 +182,3 @@ class Start(Location):
 
 class Engine(object):
     pass
-
-
-#class Battle(Engine):
-
-#    hp1 == Person(Hero).hit_points
-#    hp2 == Person().hit_points
-#    damage1 = Person(Hero).strength
-#    damage2 = Person().strength
-#    def battle(hp1, damage1, hp2, damage2):
-#        while hp1  > 0 or hp2 > 0:
-#            hp1 -= damage2,
-#            hp2 -= damage1
