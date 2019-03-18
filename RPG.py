@@ -11,6 +11,7 @@ class Hero(object):
             self.strength = strength
             self.money = money
 
+
     name = Hero(0, 0, 0)
     food = 0
     axe = False
@@ -78,7 +79,7 @@ class NPC(object):
             self.strength = strength
             self.money = money
 
-    Sigfrid = Person(0, 0, 0)
+    Sigfrid = NPC(0, 0, 0)
     alive = True
 
         def shop_greating():
@@ -112,8 +113,6 @@ class NPC(object):
             elif buy == "attack" or "kill":
                 pass
             elif buy == "run" or "leave"
-                pass
-
             else:
                 print("I dont understand")
 
@@ -187,12 +186,30 @@ class Start(Location):
         1. Go to the shop?
         2. Go to the lake?
         3. Go to the forest?
-        Or You just need help?(type help)
+        Or You just need help?
         """)
 
         direction = input("<")
+            if direction == "1":
+                pass
+            elif direction == "2":
+                pass
+            elif direction == "3":
+                pass
+            else:
+                print("""
+You probaly are wondering how to quit this stupid game. If you do just remember
+that you can ask for help on any of the screens when you are asked for input.
+(procrastinating instead of coding). So sure if you will be courius enough
+to read what was going through my mind than sure just type help and i will
+lend you a helping hand. Although you probably you just want to quit -
+press Ctrl-Q.                       
+                    """)
 
 
+class Map(object):
+
+    locations
 
 class Engine(object):
     pass
