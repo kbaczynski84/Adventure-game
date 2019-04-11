@@ -19,39 +19,39 @@ class Hero(object):
     bow = False
     fishingrod = False
 
-    def hptest():
-        if Hero.hitpoints <= 0
-            Death()
+    def hp_test():
+        if Hero.hitpoints <= 0:
+            Death.enter()
         else:
             pass
 
-    def hungertest():
-        if Hero.food <= 0
-            Death()
+    def hunger_test():
+        if Hero.food <= 0:
+            Death.enter()
         else:
             pass
 
     def equip():
-        if axe == True:
-            strength += 10
-        elif pickaxe == True:
-            strength += 5
-        elif bow == True:
-            strength += 2
+        if Hero.axe == True:
+            Hero.strength += 10
+        elif Hero.pickaxe == True:
+            Hero.strength += 5
+        elif Hero.bow == True:
+            Hero.strength += 2
         else:
             pass
 
-# this metod i think it will be easier to assign to creature to only fight hero
+# this method i think it will be easier to assign to creature to only fight hero
     def fight():
         hp1 == Hero.hit_points
         hp2 == Creature.hit_points
         damage1 = Hero.strength.equip
         damage2 = Creature.strength
-            while hp1  > 0 or hp2 > 0:
-                hp1 -= damage2,
-                hp2 -= damage1
-            else:
-                Print(f"You lost {hp1}HP, your opponent lost {hp2}HP")
+        while hp1  > 0 or hp2 > 0:
+            hp1 -= damage2,
+            hp2 -= damage1
+        else:
+            Print(f"You lost {hp1}HP, your opponent lost {hp2}HP")
 
 class Creature(object):
     def __init__(self, hit_points, strength, money):
@@ -75,46 +75,49 @@ class Creature(object):
 
 class NPC(object):
     def __init__(self, hit_points, strength, money):
-            self.hit_poitns = hit_points
+            self.hit_points = hit_points
             self.strength = strength
             self.money = money
 
     Sigfrid = NPC(0, 0, 0)
     alive = True
 
-        def shop_greating():
-            print("""
-            Greeting traveller. What do you wish to have?
-            1.FishingRod          - 10 gp
-            2.Bow                 - 20 gp
-            2 Pickaxe             - 50 gp
-            4.Axe                 - 100 gp
-            5. or maybe some food?-  2 gp
-            """)
+    def shop_greating(self):
+        print("""
+        Greeting traveller. What do you wish to have?
+        1.FishingRod          - 10 gp
+        2.Bow                 - 20 gp
+        2 Pickaxe             - 50 gp
+        4.Axe                 - 100 gp
+        5. or maybe some food?-  2 gp
+        """)
 
-            buy = input("<")
+    def buy(self):
+        self.buy = input("<")
 
-            if buy == "1" and money > 10:
-                fishingrod = True,
-                money -= 10
-            elif buy == "2" and money > 20:
-                bow = True,
-                money -= 20
-            elif buy == "3" and money > 50:
-                 pickaxe = True,
-                 money -= 50
-            elif buy == "4" and money > 100:
-                axe = True,
-                money -= 100
-            elif buy == "5" and money > 2:
-                food += 5
-            elif buy == "steal":
-                pass
-            elif buy == "attack" or "kill":
-                pass
-            elif buy == "run" or "leave"
-            else:
-                print("I dont understand")
+    if self.buy == "1" and Hero.money > 10:
+        Hero.fishingrod = True,
+        Hero.money -= 10
+    elif self.buy == "2" and Hero.money > 20:
+        Hero.bow = True,
+        Hero.money -= 20
+    elif self.buy == "3" and Hero.money > 50:
+        Hero.pickaxe = True,
+        Hero.money -= 50
+    elif self.buy == "4" and Hero.money > 100:
+        Hero.axe = True,
+        Hero.money -= 100
+    elif self.buy == "5" and Hero.money > 2:
+        Hero.food += 5
+        Hero.money -= 2
+    elif  self.buy == "steal":
+        pass
+    elif buy == "attack" or "kill":
+        pass
+    elif buy == "run" or "leave":
+        pass
+    else:
+        print("I dont understand")
 
 
 
@@ -189,15 +192,15 @@ class Start(Location):
         Or You just need help?
         """)
 
-        direction = input("<")
-            if direction == "1":
-                pass
-            elif direction == "2":
-                pass
-            elif direction == "3":
-                pass
-            else:
-                print("""
+    direction = input("<")
+        if direction == "1":
+            pass
+        elif direction == "2":
+            pass
+        elif direction == "3":
+            pass
+        else:
+            print("""
 You probaly are wondering how to quit this stupid game. If you do just remember
 that you can ask for help on any of the screens when you are asked for input.
 (procrastinating instead of coding). So sure if you will be courius enough
@@ -208,8 +211,7 @@ press Ctrl-Q.
 
 
 class Map(object):
-
-    locations
+    passs
 
 class Engine(object):
     pass
