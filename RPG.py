@@ -184,34 +184,73 @@ class Start(Location):
 
 
     def enter(self):
-        print("""
-        You stand before your little house. What do you want to do?
-        1. Go to the shop?
-        2. Go to the lake?
-        3. Go to the forest?
-        Or You just need help?
-        """)
+        # Spojrzec na mape
 
-    direction = input("<")
-        if direction == "1":
-            pass
-        elif direction == "2":
-            pass
-        elif direction == "3":
-            pass
-        else:
-            print("""
+        print("""
 You probaly are wondering how to quit this stupid game. If you do just remember
 that you can ask for help on any of the screens when you are asked for input.
 (procrastinating instead of coding). So sure if you will be courius enough
 to read what was going through my mind than sure just type help and i will
 lend you a helping hand. Although you probably you just want to quit -
-press Ctrl-Q.                       
-                    """)
+press Ctrl-Q""")
 
 
 class Map(object):
-    passs
+    """Maap gonna look like this       5
+                                       4
+                                   3   1   2
+    """
+
+    map = {
+        0: "Death",
+        1: "Start",
+        2: "Shop",
+        3: "Lake",
+        4: "Forest",
+        5: "Dungeon"
+    }
+
+    exits = {
+        0: {"D": 0},
+        1: {"E": 2, "N": 4, "W": 3, "D": 0},
+        2: {"W": 1, "D": 0},
+        3: {"E": 1, "D": 0},
+        4: {"S": 1, "N": 5, "D": 0},
+        5: {"S": 4, "D": 0}
+
+    }
+
+    vocabulary = {
+        "Death": "D",
+        "North": "N",
+        "South": "S",
+        "East": "E",
+        "West": "W"
+    }
+
+    loc = 1
+    while True:
+        availableExits = ""
+        for direction in exits[loc].keys():
+            availableExits += direction + ","
+
+        print(map[loc])
+        if loc == 0:
+            break
+
+        direction = input("Available exits are " + availableExits).upper()
+        print()
+
+        if len(direction) > 1:
+            for word in vocabulary:
+                if word in direction:
+                    direction = vocabulary[word]
+
+        if direction in exits[loc]:
+            loc = exits[loc][direction]
+        else:
+            print("You cannot go in that direction")
+
 
 class Engine(object):
     pass
