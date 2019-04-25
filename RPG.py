@@ -6,32 +6,32 @@ name = input("Hello what is your name?")
 
 
 class Hero(object):
-    def __init__(self, hit_points, strength, money):
-            self.hit_poitns = hit_points
+    def __init__(self, hit_points, strength, money, name, food):
+            self.hit_points = hit_points
             self.strength = strength
             self.money = money
+            self.name = name
+            self.food = food
 
 
-    name = Hero(0, 0, 0)
-    food = 0
     axe = False
     pickaxe = False
     bow = False
     fishingrod = False
 
-    def hp_test():
-        if Hero.hitpoints <= 0:
+    def hp_test(self):
+        if Hero.hit_points <= 0:
             Death.enter()
         else:
             pass
 
-    def hunger_test():
+    def hunger_test(self):
         if Hero.food <= 0:
             Death.enter()
         else:
             pass
 
-    def equip():
+    def equip(self):
         if Hero.axe == True:
             Hero.strength += 10
         elif Hero.pickaxe == True:
@@ -42,16 +42,16 @@ class Hero(object):
             pass
 
 # this method i think it will be easier to assign to creature to only fight hero
-    def fight():
-        hp1 == Hero.hit_points
-        hp2 == Creature.hit_points
+    def fight(self, hero, creature):
+        hp1 = Hero.hit_points
+        hp2 = Creature.hit_points
         damage1 = Hero.strength.equip
         damage2 = Creature.strength
         while hp1  > 0 or hp2 > 0:
             hp1 -= damage2,
             hp2 -= damage1
         else:
-            Print(f"You lost {hp1}HP, your opponent lost {hp2}HP")
+            print(f"You lost {hp1} HP, your opponent lost {hp2} HP")
 
 class Creature(object):
     def __init__(self, hit_points, strength, money):
@@ -95,29 +95,29 @@ class NPC(object):
     def buy(self):
         self.buy = input("<")
 
-    if self.buy == "1" and Hero.money > 10:
-        Hero.fishingrod = True,
-        Hero.money -= 10
-    elif self.buy == "2" and Hero.money > 20:
-        Hero.bow = True,
-        Hero.money -= 20
-    elif self.buy == "3" and Hero.money > 50:
-        Hero.pickaxe = True,
-        Hero.money -= 50
-    elif self.buy == "4" and Hero.money > 100:
-        Hero.axe = True,
-        Hero.money -= 100
-    elif self.buy == "5" and Hero.money > 2:
-        Hero.food += 5
-        Hero.money -= 2
-    elif  self.buy == "steal":
-        pass
-    elif buy == "attack" or "kill":
-        pass
-    elif buy == "run" or "leave":
-        pass
-    else:
-        print("I dont understand")
+        if self.buy == "1" and Hero.money > 10:
+            Hero.fishingrod = True,
+            Hero.money -= 10
+        elif self.buy == "2" and Hero.money > 20:
+            Hero.bow = True,
+            Hero.money -= 20
+        elif self.buy == "3" and Hero.money > 50:
+            Hero.pickaxe = True,
+            Hero.money -= 50
+        elif self.buy == "4" and Hero.money > 100:
+            Hero.axe = True,
+            Hero.money -= 100
+        elif self.buy == "5" and Hero.money > 2:
+            Hero.food += 5
+            Hero.money -= 2
+        elif  self.buy == "steal":
+            pass
+        elif self.buy == "attack" or "kill":
+            pass
+        elif self.buy == "run" or "leave":
+            pass
+        else:
+            print("I dont understand")
 
 
 
@@ -127,7 +127,7 @@ class Location(object):
 
 class Death(Location):
 
-     motivation = [
+    motivation = [
         "You died. You kinda suck at this.",
         "Such a luser",
         "You're worse than your Dad's jokes."
@@ -136,9 +136,10 @@ class Death(Location):
         "Your lucky that's only a game.Though you probably also suck in life"
         ]
 
-def enter(self):
-    print(Death.motivation[randint(0, len(self.motivation)-1)])
-    exit(1)
+   def enter(self):
+        print(Death.motivation[random.randint(0, len(self.motivation)-1)])
+        exit(1)
+
 
 class Forest(Location):
 
@@ -196,7 +197,7 @@ press Ctrl-Q""")
 
 
 class Map(object):
-    """Maap gonna look like this       5
+    """Map gonna look like this        5
                                        4
                                    3   1   2
     """
