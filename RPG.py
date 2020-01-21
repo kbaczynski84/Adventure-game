@@ -1,10 +1,6 @@
 from random import random
 from sys import exit
 
-name = input("Hello what is your name?")
-
-
-
 class Hero(object):
     def __init__(self, hit_points, strength, money, name, food):
             self.hit_points = hit_points
@@ -12,12 +8,10 @@ class Hero(object):
             self.money = money
             self.name = name
             self.food = food
-
-
-    axe = False
-    pickaxe = False
-    bow = False
-    fishingrod = False
+            self.axe = False
+            self.pickaxe = False
+            self.bow = False
+            self.fishingrod = False
 
     def hp_test(self):
         if Hero.hit_points <= 0:
@@ -52,24 +46,32 @@ class Hero(object):
             hp2 -= damage1
         else:
             print(f"You lost {hp1} HP, your opponent lost {hp2} HP")
+            
+        def __str__(self):#stole this one from your hero class
+        return ("Name: "+ str(self.name)+
+                "\nHitpoints: "+ str(self.hit_points)
+                +"\nStrength: " + str(self.strength)
+                +"\nFood:" + str(self.food))
 
+    
 class Creature(object):
     def __init__(self, hit_points, strength, money):
             self.hit_poitns = hit_points
             self.strength = strength
             self.money = money
 
-
+            
+#put your monsters in the location you want them
 #class monster(creature)
-    goblin = Creature(0, 0, 0)
+goblin = Creature(0, 0, 0)
 
 
 #class Animall(Creature):
-    deer = Creature(0, 0, 0)
+deer = Creature(0, 0, 0)
 
 
 #class Fish(Person):
-    herring = Creture(0, 0, 0)
+herring = Creture(0, 0, 0)
 
 
 
@@ -78,48 +80,47 @@ class NPC(object):
             self.hit_points = hit_points
             self.strength = strength
             self.money = money
-
-    Sigfrid = NPC(0, 0, 0)
-    alive = True
+            self.alive = True #set the value in the init method or
 
     def shop_greating(self):
         print("""
         Greeting traveller. What do you wish to have?
         1.FishingRod          - 10 gp
         2.Bow                 - 20 gp
-        2 Pickaxe             - 50 gp
+        3 Pickaxe             - 50 gp
         4.Axe                 - 100 gp
         5. or maybe some food?-  2 gp
         """)
+        return input("<")
 
-    def buy(self):
-        self.buy = input("<")
-
-        if self.buy == "1" and Hero.money > 10:
+    def buy(self, input):
+         if input == "1" and Hero.money > 10:
             Hero.fishingrod = True,
             Hero.money -= 10
-        elif self.buy == "2" and Hero.money > 20:
+        elif input == "2" and Hero.money > 20:
             Hero.bow = True,
             Hero.money -= 20
-        elif self.buy == "3" and Hero.money > 50:
+        elif input == "3" and Hero.money > 50:
             Hero.pickaxe = True,
             Hero.money -= 50
-        elif self.buy == "4" and Hero.money > 100:
+        elif input == "4" and Hero.money > 100:
             Hero.axe = True,
             Hero.money -= 100
-        elif self.buy == "5" and Hero.money > 2:
+        elif input == "5" and Hero.money > 2:
             Hero.food += 5
             Hero.money -= 2
-        elif  self.buy == "steal":
+        elif input == "steal":
             pass
-        elif self.buy == "attack" or "kill":
+        elif input == "attack" or "kill":
             pass
-        elif self.buy == "run" or "leave":
+        elif input == "run" or "leave":
             pass
         else:
             print("I dont understand")
 
 
+Sigfrid = NPC(0, 0, 0) #instantiate after the definition not in it and not before
+Sigfrid.alive = True
 
 class Location(object):
     pass
@@ -152,6 +153,7 @@ class Forest(Location):
         wont be carefull.
         """)
 
+        
 class Dungeon(Location):
 
     def enter(self):
@@ -161,16 +163,19 @@ class Dungeon(Location):
         a solid rock before. Do you decide to come in?(Y/N)
         """)
 
+        
 class Lake(Location):
 
     def enter(self):
         print("You went for a stroll besiede the lakeshore.")
 
+        
 class Shop(Location):
 
     def enter(self):
         if Sigfrid.alive == True:
-            shop_greating()
+            input = Sigfrid.shop_greating()
+            Sigfrid.buy(input)
         else:
             print("""
             The shop is demolished. You dont want to spend here to
@@ -181,8 +186,6 @@ class Shop(Location):
 
 
 class Start(Location):
-
-
 
     def enter(self):
         # Spojrzec na mape
@@ -196,6 +199,10 @@ lend you a helping hand. Although you probably you just want to quit -
 press Ctrl-Q""")
 
 
+name = input("Enter hero's name>>> ")
+Hero = Hero(10,10,10,name, 10)
+print(Hero)
+Sigfrid = NPC(0, 0, 0)
 class Map(object):
     """Map gonna look like this        5
                                        4
@@ -238,6 +245,21 @@ class Map(object):
         print(map[loc])
         if loc == 0:
             break
+        if loc == 1:
+            start = Start()
+            start.enter()
+        if loc == 2:
+            shop = Shop()
+            shop.enter()
+        elif loc == 3:
+            lake = Lake()
+            lake.enter()
+        elif loc == 4:
+            forest = Forest()
+            forest.enter()
+        elif loc == 5:
+            dungeon = Dungeon()
+            dungeon.enter()
 
         direction = input("Available exits are " + availableExits).upper()
         print()
